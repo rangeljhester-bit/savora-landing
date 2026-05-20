@@ -438,6 +438,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
       <h2>¿Listo para cotizar<br>sin estrés?</h2>
       <p>Deja tu email y te contactamos para una demo personalizada. Sin compromiso.</p>
       <div class="cta-form">
+        <input type="text" class="cta-input" placeholder="Tu nombre" id="nameInput">
         <input type="email" class="cta-input" placeholder="tu@empresa.cl" id="emailInput">
         <button class="cta-btn" onclick="handleCTA()">Quiero una demo</button>
       </div>
@@ -459,10 +460,13 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
 </footer>
 
 <script>
-function handleCTA(){
-  const email=document.getElementById('emailInput').value;
+async function handleCTA(){
+  const name=document.getElementById('nameInput').value.trim();
+  const email=document.getElementById('emailInput').value.trim();
+  if(!name){document.getElementById('nameInput').style.borderColor='#e24b4a';return}
   if(!email||!email.includes('@')){document.getElementById('emailInput').style.borderColor='#e24b4a';return}
-  document.querySelector('.cta-form').innerHTML='<p style="color:var(--teal);font-size:1rem;font-weight:600;padding:1rem 0">✓ ¡Genial! Te contactamos pronto.</p>';
+  const btn=document.querySelector('.cta-btn');btn.textContent='Enviando...';btn.disabled=true;
+  try{await fetch('https://script.google.com/macros/s/AKfycby5sj1iHBiWDlI6WCSRalBjcVbML722-DyjM7SmOQIK1egqPr0O5g4G1Hfdc_h16shm/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:name,email:email,fecha:new Date().toLocaleString('es-CL')})});document.querySelector('.cta-form').innerHTML='<p style="color:var(--teal);font-size:1.1rem;font-weight:700;padding:1.5rem 0">✓ ¡Genial, '+name+'! Te contactamos pronto.</p>';}catch(e){btn.textContent='Quiero una demo →';btn.disabled=false;}
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})});
