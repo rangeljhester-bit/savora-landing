@@ -213,6 +213,17 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
   .stats{gap:1.2rem}
   .stat-num{font-size:1.6rem}
 }
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;width:100%;max-width:900px;margin:2rem auto 0}
+.hcard{border-radius:16px;padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform 0.25s}
+.hcard:hover{transform:translateY(-6px)}
+.hcard-teal{background:linear-gradient(135deg,#00a87d,#00c896);box-shadow:0 8px 32px rgba(0,168,125,0.4)}
+.hcard-navy{background:linear-gradient(135deg,#0d1f3c,#1a3560);box-shadow:0 8px 32px rgba(13,31,60,0.4)}
+.hcard-accent{background:linear-gradient(135deg,#008f69,#00a87d);box-shadow:0 8px 32px rgba(0,143,105,0.4)}
+.hcard-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem;color:#fff}
+.hcard-num{font-family:'Montserrat',sans-serif;font-size:2.4rem;font-weight:900;color:#fff;line-height:1}
+.hcard-unit{font-size:1rem;font-weight:700;color:rgba(255,255,255,0.85)}
+.hcard-label{font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.95);margin-top:0.4rem;text-transform:uppercase;letter-spacing:0.5px}
+.hcard-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.3rem;line-height:1.4}
 </style>
 </head>
 <body>
@@ -246,11 +257,29 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
         <a href="#funciones" class="btn-secondary">Ver cómo funciona</a>
       </div>
       <p style="font-size:0.82rem;color:var(--muted);animation:fadeUp 0.6s 0.35s ease both">¿Ya tienes cuenta? <a href="https://app.savora.cl" style="color:var(--teal);font-weight:600;text-decoration:none">Accede a Savora →</a></p>
-      <div class="stats" style="justify-content:flex-start;border-top:1px solid var(--border);margin-top:2.5rem;padding-top:2rem;animation:fadeUp 0.6s 0.4s ease both">
-        <div class="stat-item"><div class="stat-num">3 min</div><div class="stat-label">por cotización</div></div>
-        <div class="stat-item"><div class="stat-num">0%</div><div class="stat-label">error en costos</div></div>
-        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">PDF profesional</div></div>
-      </div>
+      <div class="hero-cards">
+  <div class="hcard hcard-teal">
+    <div class="hcard-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+    <div class="hcard-num">3</div>
+    <div class="hcard-unit">min</div>
+    <div class="hcard-label">por cotización</div>
+    <div class="hcard-sub">Desde insumos hasta PDF listo</div>
+  </div>
+  <div class="hcard hcard-navy">
+    <div class="hcard-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <div class="hcard-num">0</div>
+    <div class="hcard-unit">%</div>
+    <div class="hcard-label">error en costos</div>
+    <div class="hcard-sub">Costeo exacto por insumo</div>
+  </div>
+  <div class="hcard hcard-accent">
+    <div class="hcard-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+    <div class="hcard-num">100</div>
+    <div class="hcard-unit">%</div>
+    <div class="hcard-label">PDF profesional</div>
+    <div class="hcard-sub">Con tu marca y listo para enviar</div>
+  </div>
+</div>
     </div>
 
     <div class="hero-visual">
