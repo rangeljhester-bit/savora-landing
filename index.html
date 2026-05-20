@@ -213,6 +213,10 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
   .stats{gap:1.2rem}
   .stat-num{font-size:1.6rem}
 }
+.btn-primary{background:var(--teal);color:#fff;padding:0.9rem 2.2rem;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,168,125,0.25)}
+.btn-secondary{background:#fff;color:var(--navy);padding:0.9rem 2rem;border-radius:50px;font-size:1rem;font-weight:500;text-decoration:none;border:1.5px solid var(--border);transition:all 0.2s;display:inline-flex;align-items:center}
+.btn-secondary:hover{border-color:rgba(0,168,125,0.4);color:var(--teal)}
 .hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;width:100%;max-width:900px;margin:2rem auto 0}
 .hcard{border-radius:16px;padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform 0.25s}
 .hcard:hover{transform:translateY(-6px)}
@@ -246,9 +250,8 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
 
 <section class="hero" style="min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;background:linear-gradient(160deg,#eef6f2 0%,#f7f8fc 60%);position:relative;overflow:hidden;text-align:left">
   <div class="hero-dots"></div>
-  <div style="max-width:1080px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+  <div style="max-width:680px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
 
-    <div>
       <div class="hero-badge" style="margin-bottom:1.5rem"><span class="badge-dot"></span>Software para catering y eventos</div>
       <h1 style="font-family:Montserrat,sans-serif;font-size:clamp(2.5rem,5.5vw,5.4rem);font-weight:800;line-height:1.05;letter-spacing:-2px;color:var(--navy);margin-bottom:1.2rem;animation:fadeUp 0.6s 0.1s ease both">Cotiza tus eventos<br>en minutos.<br><span class="accent">Cobra con confianza.</span></h1>
       <p style="font-size:1.05rem;color:var(--muted);max-width:460px;line-height:1.75;margin-bottom:2rem;animation:fadeUp 0.6s 0.2s ease both">Savora calcula el costo real de cada evento, genera cotizaciones profesionales y te muestra si cada propuesta es rentable — antes de aceptarla.</p>
@@ -279,65 +282,6 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
     <div class="hcard-label">PDF profesional</div>
     <div class="hcard-sub">Con tu marca y listo para enviar</div>
   </div>
-</div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="hv-card hv-card-tl">
-        <div class="hv-card-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00a87d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div>
-          <div class="hv-card-val">$3.5M</div>
-          <div class="hv-card-label">Total cotizado</div>
-        </div>
-      </div>
-      <div class="hv-card hv-card-br">
-        <div class="hv-card-icon" style="background:#e8f0fe">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a6fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div>
-          <div class="hv-card-val" style="color:#1a6fff">+34%</div>
-          <div class="hv-card-label">Margen promedio</div>
-        </div>
-      </div>
-      <div class="hv-mockup">
-        <div class="hv-screen-bar">
-          <div class="hv-dot" style="background:#ff5f57"></div>
-          <div class="hv-dot" style="background:#febc2e"></div>
-          <div class="hv-dot" style="background:#28c840"></div>
-          <span class="hv-url">app.savora.cl</span>
-        </div>
-        <div class="hv-app">
-          <div class="hv-sidebar">
-            <div class="hv-logo-sm">S</div>
-            <div class="hv-nav active"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-            <div class="hv-nav"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div class="hv-nav"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <div class="hv-nav"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-          </div>
-          <div class="hv-body">
-            <div class="hv-toprow">
-              <span class="hv-title">Cotizaciones</span>
-              <span class="hv-newbtn">+ Nueva</span>
-            </div>
-            <div class="hv-kpis">
-              <div class="hv-kpi"><div class="hv-kpi-v">$4.2M</div><div class="hv-kpi-l">Este mes</div></div>
-              <div class="hv-kpi"><div class="hv-kpi-v">34%</div><div class="hv-kpi-l">Margen</div></div>
-              <div class="hv-kpi hv-kpi-hl"><div class="hv-kpi-v">12</div><div class="hv-kpi-l">Activas</div></div>
-            </div>
-            <div class="hv-table">
-              <div class="hv-thead"><span>Cliente</span><span>Evento</span><span>Total</span><span>Estado</span></div>
-              <div class="hv-tr"><span class="hv-tm">Café &amp; Lettere</span><span class="hv-ts">Desayuno</span><span class="hv-tm">$485K</span><span class="hv-pill ok">Aceptada</span></div>
-              <div class="hv-tr"><span class="hv-tm">Gandollini</span><span class="hv-ts">Almuerzo</span><span class="hv-tm">$1.2M</span><span class="hv-pill sent">Enviada</span></div>
-              <div class="hv-tr"><span class="hv-tm">Aconcagua</span><span class="hv-ts">Cóctel</span><span class="hv-tm">$890K</span><span class="hv-pill draft">Borrador</span></div>
-              <div class="hv-tr"><span class="hv-tm">El Huerto</span><span class="hv-ts">Cena exec.</span><span class="hv-tm">$620K</span><span class="hv-pill ok">Aceptada</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
