@@ -489,10 +489,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
 function handleCTA(){
   const email=document.getElementById('emailInput').value;
   if(!email||!email.includes('@')){document.getElementById('emailInput').style.borderColor='#e24b4a';return}
-  const btn=document.querySelector('.cta-btn');
-  btn.textContent='Enviando…';btn.disabled=true;
-  fetch('https://script.google.com/macros/s/AKfycby5sj1iHBiWDlI6WCSRalBjcVbML722-DyjM7SmOQIK1egqPr0O5g4G1Hfdc_h16shm/exec',{method:'POST',body:JSON.stringify({email:email,fecha:new Date().toISOString()}),headers:{'Content-Type':'application/json'}})
-    .finally(()=>{document.querySelector('.cta-form').innerHTML='<p style="color:var(--teal);font-size:1rem;font-weight:600;padding:1rem 0">✓ ¡Genial! Te contactamos pronto.</p>';});
+  document.querySelector('.cta-form').innerHTML='<p style="color:var(--teal);font-size:1rem;font-weight:600;padding:1rem 0">✓ ¡Genial! Te contactamos pronto.</p>';
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})});
