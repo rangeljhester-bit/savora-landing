@@ -139,6 +139,17 @@ section{padding:5.5rem 2rem}
 .role-desc{font-size:0.82rem;color:var(--muted);line-height:1.55}
 .access-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--teal);color:#fff;padding:0.85rem 2.2rem;border-radius:10px;font-size:1rem;font-weight:600;text-decoration:none;transition:all 0.2s}
 .access-btn:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,168,125,0.25)}
+.demo-box{margin-top:2rem;background:#f0faf6;border:1.5px solid rgba(0,168,125,0.25);border-radius:14px;padding:1.5rem 1.75rem;max-width:380px;margin-left:auto;margin-right:auto;text-align:left}
+.demo-title{font-size:0.95rem;font-weight:700;color:var(--navy);margin:0 0 0.3rem}
+.demo-sub{font-size:0.82rem;color:var(--muted);margin:0 0 1rem;line-height:1.5}
+.demo-creds{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.2rem}
+.demo-field{display:flex;align-items:center;gap:0.6rem;background:#fff;border:1px solid rgba(0,168,125,0.2);border-radius:8px;padding:0.55rem 0.75rem}
+.demo-key{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;width:72px;flex-shrink:0}
+.demo-val{font-size:0.88rem;font-weight:600;color:var(--navy);flex:1;font-family:monospace}
+.demo-copy{font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:6px;border:1px solid rgba(0,168,125,0.3);background:transparent;color:var(--teal);cursor:pointer;font-weight:600;transition:all 0.15s;white-space:nowrap}
+.demo-copy:hover{background:var(--teal);color:#fff}
+.demo-btn{display:inline-flex;align-items:center;background:transparent;border:1.5px solid var(--teal);color:var(--teal);padding:0.65rem 1.4rem;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:all 0.2s}
+.demo-btn:hover{background:var(--teal);color:#fff}
 .access-note{font-size:0.82rem;color:var(--muted);margin-top:1rem}
 
 /* ── STEPS ── */
@@ -368,6 +379,23 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
       </div>
       <a href="https://app.savora.cl" class="access-btn">Ingresar a Savora →</a>
       <p class="access-note">El sistema detecta tu rol automáticamente al ingresar</p>
+      <div class="demo-box">
+        <p class="demo-title">¿Quieres ver cómo funciona?</p>
+        <p class="demo-sub">Usa estas credenciales de demo para explorar el sistema:</p>
+        <div class="demo-creds">
+          <div class="demo-field">
+            <span class="demo-key">Email</span>
+            <span class="demo-val">demo@savora.cl</span>
+            <button class="demo-copy" onclick="copiar('demo@savora.cl',this)">Copiar</button>
+          </div>
+          <div class="demo-field">
+            <span class="demo-key">Contraseña</span>
+            <span class="demo-val">demo123</span>
+            <button class="demo-copy" onclick="copiar('demo123',this)">Copiar</button>
+          </div>
+        </div>
+        <a href="https://app.savora.cl" class="demo-btn">Probar demo gratis →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -471,6 +499,7 @@ async function handleCTA(){
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})});
 });
+function copiar(texto,btn){navigator.clipboard.writeText(texto).then(()=>{const orig=btn.textContent;btn.textContent='✓';btn.style.background='var(--teal)';btn.style.color='#fff';setTimeout(()=>{btn.textContent=orig;btn.style.background='';btn.style.color=''},1500)});}
 </script>
 </body>
 </html>
