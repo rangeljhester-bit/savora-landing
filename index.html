@@ -562,6 +562,14 @@ async function cargarCMS() {
 document.addEventListener('DOMContentLoaded', cargarCMS)
 
 async function handleCTA() {
+  const lastLead = localStorage.getItem('savora_last_lead');
+  if (lastLead && (Date.now() - parseInt(lastLead, 10)) < 60000) {
+    const emailEl = document.getElementById('emailInput');
+    emailEl.style.borderColor = '#e24b4a';
+    emailEl.placeholder = 'Por favor espera un momento antes de intentar de nuevo';
+    return;
+  }
+
   const nombre = document.getElementById('nombreInput').value.trim();
   const email = document.getElementById('emailInput').value.trim();
 
@@ -589,6 +597,7 @@ async function handleCTA() {
         estado: 'nuevo'
       })
     });
+    localStorage.setItem('savora_last_lead', Date.now().toString());
   } catch(e) {
     console.error('Error guardando lead:', e);
   }
