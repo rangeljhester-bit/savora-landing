@@ -264,10 +264,10 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
   <div style="max-width:680px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
 
       <div class="hero-badge" style="margin-bottom:1.5rem"><span class="badge-dot"></span>Software para catering y eventos</div>
-      <h1 style="font-family:Montserrat,sans-serif;font-size:clamp(2.5rem,5.5vw,5.4rem);font-weight:800;line-height:1.05;letter-spacing:-2px;color:var(--navy);margin-bottom:1.2rem;animation:fadeUp 0.6s 0.1s ease both">Cotiza tus eventos<br>en minutos.<br><span class="accent">Cobra con confianza.</span></h1>
-      <p style="font-size:1.05rem;color:var(--muted);max-width:460px;line-height:1.75;margin-bottom:2rem;animation:fadeUp 0.6s 0.2s ease both">Savora calcula el costo real de cada evento, genera cotizaciones profesionales y te muestra si cada propuesta es rentable — antes de aceptarla.</p>
+      <h1 data-cms="hero-titulo" style="font-family:Montserrat,sans-serif;font-size:clamp(2.5rem,5.5vw,5.4rem);font-weight:800;line-height:1.05;letter-spacing:-2px;color:var(--navy);margin-bottom:1.2rem;animation:fadeUp 0.6s 0.1s ease both">Cotiza tus eventos<br>en minutos.<br><span class="accent">Cobra con confianza.</span></h1>
+      <p data-cms="hero-subtitulo" style="font-size:1.05rem;color:var(--muted);max-width:460px;line-height:1.75;margin-bottom:2rem;animation:fadeUp 0.6s 0.2s ease both">Savora calcula el costo real de cada evento, genera cotizaciones profesionales y te muestra si cada propuesta es rentable — antes de aceptarla.</p>
       <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1rem;animation:fadeUp 0.6s 0.3s ease both">
-        <a href="#contacto" class="btn-primary">Comenzar gratis →</a>
+        <a href="#contacto" class="btn-primary" data-cms="hero-cta">Comenzar gratis →</a>
         <a href="#funciones" class="btn-secondary">Ver cómo funciona</a>
       </div>
       <p style="font-size:0.82rem;color:var(--muted);animation:fadeUp 0.6s 0.35s ease both">¿Ya tienes cuenta? <a href="https://app.savora.cl" style="color:var(--teal);font-weight:600;text-decoration:none">Accede a Savora →</a></p>
@@ -488,6 +488,50 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center}
 </footer>
 
 <script>
+const SUPABASE_URL = 'https://bqyssjbeogesqrlzdtgk.supabase.co'
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxeXNzamJlb2dlc3FybHpkdGdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NTI4NDcsImV4cCI6MjA5NDUyODg0N30.rnKRA4bfo9zqoKnGdAATtun7OBx5SCX7zIJBSXguYpc'
+
+async function cargarCMS() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/savora_kv?key=eq.cms%3Alanding&select=value`, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      }
+    })
+    const data = await res.json()
+    if (!data?.[0]?.value) return
+    const cms = data[0].value
+
+    // Hero
+    if (cms.hero?.titulo) {
+      const el = document.querySelector('.hero-title, h1, [data-cms="hero-titulo"]')
+      if (el) el.textContent = cms.hero.titulo
+    }
+    if (cms.hero?.subtitulo) {
+      const el = document.querySelector('.hero-subtitle, .hero-sub, [data-cms="hero-subtitulo"]')
+      if (el) el.textContent = cms.hero.subtitulo
+    }
+    if (cms.hero?.ctaTexto) {
+      const el = document.querySelector('.btn-primary, .cta-btn, [data-cms="hero-cta"]')
+      if (el) el.textContent = cms.hero.ctaTexto
+    }
+    if (cms.hero?.ctaUrl) {
+      const el = document.querySelector('.btn-primary, [data-cms="hero-cta"]')
+      if (el) el.href = cms.hero.ctaUrl
+    }
+
+    // Footer
+    if (cms.footer?.email) {
+      document.querySelectorAll('[data-cms="footer-email"]').forEach(el => el.textContent = cms.footer.email)
+    }
+  } catch(e) {
+    console.error('CMS error:', e)
+  }
+}
+
+document.addEventListener('DOMContentLoaded', cargarCMS)
+
 async function handleCTA() {
   const nombre = document.getElementById('nombreInput').value.trim();
   const email = document.getElementById('emailInput').value.trim();
